@@ -44,15 +44,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ auth()->user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -62,16 +57,18 @@
                                 <a class="dropdown-item" href="{{ route('profile.changepassword') }}">
                                     Ganti Password
                                 </a>
-                                <a class="dropdown-item" href="#" onclick="logout()">
-                                    {{ __('Logout') }}
+                                <a class="dropdown-item" href="#" onclick="keluar()">
+                                    Keluar
                                 </a>
                                 <script>
-                                    function logout() {
-                                        if (confirm("Apakah anda yakin ingin Logout?")) {
+                                    function keluar()
+                                    {
+                                        if(confirm("Apa Anda yakin untuk keluar dari Aplikasi?"))
+                                        {
                                             event.preventDefault();
                                             document.getElementById('logout-form').submit();
                                         } else {
-                                            return false;
+                                            return 0;
                                         }
                                     }
                                 </script>
