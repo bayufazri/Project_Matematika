@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'MTK Mr. Catur',
             'username' => 'admin',
-            'password' => bcrypt('12345678')
+            'password' => bcrypt('password123')
         ]);
     }
 }
