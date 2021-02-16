@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Alert;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,7 +10,7 @@ class UserController extends Controller
 {
     public function myProfile()
     {
-        return view('profile.setting');
+        return view('admin.profile.edit');
     }
 
     public function updateProfile()
@@ -24,12 +25,14 @@ class UserController extends Controller
             'name' => request('name'),
             'username' => request('username')
         ]);
-        return back();
+
+        Alert::success('Profile Berhasil Diubah');
+        return redirect()->route('home');
     }
 
     public function changePassword()
     {
-        return view('profile.password');
+        return view('admin.profile.password');
     }
 
     public function updatePassword()
@@ -45,8 +48,10 @@ class UserController extends Controller
             auth()->user()->update([
                 'password' => bcrypt(request('password'))
             ]);
+            Alert::success('Password Berhasil Diubah');
             return redirect()->route('home');
         } else {
+            Alert::error('Password Gagal Diubah');
             return back()->withErrors(['old_password' => 'Password Lama tidak Valid!']);
         }
     }

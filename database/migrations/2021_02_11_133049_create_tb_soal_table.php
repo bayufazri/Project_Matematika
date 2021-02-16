@@ -15,7 +15,7 @@ class CreateTbSoalTable extends Migration
     {
         Schema::create('tb_soal', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_soal')->unique();
+            $table->string('kode_soal');
             $table->text('soal');
             $table->text('pilihan_a');
             $table->text('pilihan_b');

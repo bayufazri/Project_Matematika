@@ -1,16 +1,11 @@
-@extends('layouts.app')
-
+@extends('layouts.dashboard.app',['title' => 'Edit Password'])
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-12">
             <div class="card">
                 <form action="{{ route('profile.updatepassword') }}" method="post">
                     @csrf
                     @method('PATCH')
-                    <div class="card-header">
-                        Ganti Password
-                    </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label for="old_password">Password Lama:</label>
@@ -28,15 +23,15 @@
                         @enderror
                         <div class="form-group">
                             <label for="password_confirmation">Ulangi Password Baru:</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                class="form-control">
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Update Password</button>
+                        <button type="submit" class="btn btn-success">Update Password</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
-@endsection
+@stop

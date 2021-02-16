@@ -15,7 +15,7 @@ class CreateTbMateriTable extends Migration
     {
         Schema::create('tb_materi', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_materi')->unique();
+            $table->string('kode_materi');
             $table->string('sub_materi');
             $table->text('materi');
             $table->text('thumbnail')->nullable();
